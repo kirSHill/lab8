@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fillWidth="false" maxWidth="2000.0" prefHeight="1000.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.gui.controllers.CollectionController">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            <Menu mnemonicParsing="false" text="Commands">
+              <items>
+                <MenuItem fx:id="infoItem" mnemonicParsing="false" text="Info" />
+                  <MenuItem mnemonicParsing="false" text="Add" />
+                  <MenuItem mnemonicParsing="false" text="Update" />
+                  <MenuItem mnemonicParsing="false" text="Execute script" />
+                  <MenuItem mnemonicParsing="false" text="By Climate" />
+                  <MenuItem mnemonicParsing="false" text="By government" />
+                  <MenuItem mnemonicParsing="false" text="Remove first" />
+                  <MenuItem mnemonicParsing="false" text="Remove by id" />
+                  <MenuItem mnemonicParsing="false" text="Clear" />
+              </items>
+            </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane maxHeight="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="975.0" prefWidth="1600.0" styleClass="backgroundColor" stylesheets="@../style.css" VBox.vgrow="ALWAYS">
+            <children>
+                <AnchorPane layoutX="40.0" layoutY="68.0" prefHeight="840.0" prefWidth="900.0" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="68.0">
+                    <children>
+                  <TableView fx:id="collectionTable" layoutX="19.0" layoutY="64.0" prefHeight="759.0" prefWidth="861.0" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="64.0">
+                    <columns>
+                      <TableColumn fx:id="idColumn" prefWidth="27.0" text="id" />
+                      <TableColumn fx:id="nameColumn" prefWidth="103.0" text="name" />
+                        <TableColumn prefWidth="47.0" text="x" fx:id="xColumn" />
+                        <TableColumn fx:id="yColumn" prefWidth="35.0" text="y" />
+                        <TableColumn fx:id="areaColumn" prefWidth="36.0" text="area" />
+                        <TableColumn fx:id="populationColumn" prefWidth="67.0" text="population" />
+                        <TableColumn fx:id="seaMetersColumn" prefWidth="65.0" text="sea meters" />
+                        <TableColumn fx:id="capitalColumn" prefWidth="50.0" text="capital" />
+                        <TableColumn fx:id="climateColumn" prefWidth="75.0" text="climate" />
+                        <TableColumn fx:id="governmentColumn" prefWidth="75.0" text="government" />
+                        <TableColumn prefWidth="75.0" text="governor">
+                           <columns>
+                              <TableColumn fx:id="namegColumn" prefWidth="81.0" text="name" />
+                              <TableColumn fx:id="agegColumn" prefWidth="25.0" text="age" />
+                              <TableColumn fx:id="heightgColumn" prefWidth="51.0" text="height" />
+                           </columns>
+                        </TableColumn>
+                        <TableColumn fx:id="dateColumn" prefWidth="78.0" text="date" />
+                        <TableColumn fx:id="authorColumn" prefWidth="45.0" text="author" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="clearButton" layoutX="73.0" layoutY="22.0" mnemonicParsing="false" onAction="#clearButtonOnAction" prefHeight="31.0" prefWidth="187.0" text="Clear" textFill="RED" AnchorPane.leftAnchor="73.0" AnchorPane.topAnchor="18.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+                  <Button fx:id="addButton" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="361.0" layoutY="18.0" mnemonicParsing="false" onAction="#addButtonOnAction" prefHeight="31.0" prefWidth="187.0" text="Add" textAlignment="CENTER" AnchorPane.topAnchor="18.0">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Button>
+                  <ImageView fx:id="changeAccountField" fitHeight="40.0" fitWidth="40.0" layoutX="21.0" layoutY="11.0" onMouseClicked="#changeAccountOnAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label fx:id="nicknameLabel" alignment="CENTER" layoutX="8.0" layoutY="43.0" prefHeight="16.0" prefWidth="65.0" text="kirshill" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
+                     <font>
+                        <Font name="KacstBook" size="10.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="searchButton" layoutX="652.0" layoutY="18.0" promptText="Search" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="18.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="33.0" fitWidth="40.0" layoutX="839.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="33.0" fitWidth="28.0" layoutX="842.0" layoutY="18.0" opacity="0.55" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="18.0">
+                     <image>
+                        <Image url="@../images/149852.png" />
+                     </image>
+                  </ImageView>
+                    </children>
+                </AnchorPane>
+            <AnchorPane fx:id="tabMap" layoutX="934.0" layoutY="68.0" prefHeight="840.0" prefWidth="640.0" AnchorPane.bottomAnchor="67.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="68.0">
+               <children>
+                  <Canvas fx:id="objectCanvas" height="840.0" width="640.0" />
+               </children>
+            </AnchorPane>
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
